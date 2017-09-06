@@ -52,7 +52,7 @@ final class DecodeHandler extends Handler {
     public void handleMessage(Message message) {
         if (message.what == R.id.decode) {
             decode((byte[]) message.obj, message.arg1, message.arg2);
-    } else if (message.what == R.id.quit) {
+        } else if (message.what == R.id.quit) {
             Looper.myLooper().quit();
         }
     }

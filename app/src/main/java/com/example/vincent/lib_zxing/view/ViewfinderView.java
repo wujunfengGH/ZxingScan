@@ -30,6 +30,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.example.vincent.lib_zxing.camera.CameraManager;
+import com.example.vincent.lib_zxing.utils.CodeUtils;
+import com.example.vincent.lib_zxing.utils.DisplayUtil;
 import com.example.vincent.zxingscan.R;
 import com.google.zxing.ResultPoint;
 
@@ -92,10 +94,10 @@ public final class ViewfinderView extends View {
         }
 
         // 扫描框的宽度
-        CameraManager.FRAME_WIDTH = dip2px(getContext(),350);/*(int) ta.getDimension(R.styleable.ViewfinderView_inner_width, DisplayUtil.screenWidthPx / 2)*/;
+        CameraManager.FRAME_WIDTH = DisplayUtil.dip2px(getContext(),350);/*(int) ta.getDimension(R.styleable.ViewfinderView_inner_width, DisplayUtil.screenWidthPx / 2)*/;
 
         // 扫描框的高度
-        CameraManager.FRAME_HEIGHT = dip2px(getContext(),250);/*(int) ta.getDimension(R.styleable.ViewfinderView_inner_height, DisplayUtil.screenWidthPx / 2)*/;
+        CameraManager.FRAME_HEIGHT = DisplayUtil.dip2px(getContext(),250);/*(int) ta.getDimension(R.styleable.ViewfinderView_inner_height, DisplayUtil.screenWidthPx / 2)*/;
 
         // 扫描框边角颜色
         innercornercolor = ta.getColor(R.styleable.ViewfinderView_inner_corner_color, Color.parseColor("#45DDDD"));
@@ -105,9 +107,9 @@ public final class ViewfinderView extends View {
         innercornerwidth = (int) ta.getDimension(R.styleable.ViewfinderView_inner_corner_width, 15);
 
         // 扫描bitmap
-        Drawable drawable = ta.getDrawable(R.styleable.ViewfinderView_inner_scan_bitmap);
-        if (drawable != null) {
-        }
+//        Drawable drawable = ta.getDrawable(R.styleable.ViewfinderView_inner_scan_bitmap);
+//        if (drawable != null) {
+//        }
 
         // 扫描控件
         scanLight = BitmapFactory.decodeResource(getResources(), ta.getResourceId(R.styleable.ViewfinderView_inner_scan_bitmap, R.drawable.scan_light));
@@ -266,15 +268,5 @@ public final class ViewfinderView extends View {
     public void addPossibleResultPoint(ResultPoint point) {
         possibleResultPoints.add(point);
     }
-
-
-    /**
-     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
-     */
-    public static int dip2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
 
 }
