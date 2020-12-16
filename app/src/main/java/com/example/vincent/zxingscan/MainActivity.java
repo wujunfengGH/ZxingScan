@@ -97,6 +97,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e("vincent", "mainDestory");
+        Log.e("vincent", "mainDestroy");
     }
 }
